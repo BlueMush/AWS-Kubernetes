@@ -4,7 +4,7 @@ AWS 정리
 ## 목차
 1. [CloudService란](#1-CloudService)
     * [서비스유형](#서비스유형)
-2. [AWS](#2-AWS)
+2. [AWS란](#2-AWS)
 
 
 ---
