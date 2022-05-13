@@ -3,8 +3,12 @@ AWS 정리
 
 ## 목차
 1. [CloudService란](#1-CloudService)
-    * [서비스유형](#서비스유형)
+      * [서비스유형](#서비스유형)
 2. [AWS란](#2-AWS)
+      * [EKS](#EKS)
+      * [EC2](#EC2)
+      * [ELB](#ELB)
+      * [VPC](#VPC)
 
 
 ---
@@ -46,3 +50,21 @@ AWS 정리
 ## 3. AWS
 ### Amazon Web Service
 * 아마존에서 제공하는 클라우드 서비스
+
+### EKS
+* Elastic Kubernetes Service
+* AWS에서 만든 관리형 쿠버네티스 서비스
+* EKS를 사용하면 쿠버네티스 마스터노드 구성을 할 필요없이 AWS에서 관리해줌
+
+### EC2
+* Elastic Compute Cloud
+* 크기 조정가능한 가상의 컴퓨터를 클라우드로 제공해주는 서비스
+
+### ELB
+* Elastic Load Balancer
+* 로드밸런서의 주요 기능은 한 서버에 부하가 몰리지 않게 분산시켜주는 역할
+![image](https://user-images.githubusercontent.com/37949471/168220341-9c86f420-67e9-46d6-b508-4bdc450944ae.png)
+* L4 IP, Port 기준으로 스케줄링 알고리즘을 통해 부하를 분산
+* L7 IP, Port + URI, Payload, Http Header, Cookie를 추가로 산정하여 부하를 분산함
+
+
