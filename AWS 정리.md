@@ -9,7 +9,7 @@ AWS 정리
       * [EC2](#EC2)
       * [ELB](#ELB)
       * [VPC](#VPC)
-
+3. [Kubernetes Service](#3-Kubernetes)
 
 ---
 ## 1. CloudService
@@ -47,7 +47,7 @@ AWS 정리
 ![image](https://user-images.githubusercontent.com/37949471/168026157-5a6d002f-59f0-41dc-81b1-ee8763ecba6d.png)
 
 ---
-## 3. AWS
+## 2. AWS
 ### Amazon Web Service
 * 아마존에서 제공하는 클라우드 서비스
 
@@ -67,4 +67,9 @@ AWS 정리
 * L4 IP, Port 기준으로 스케줄링 알고리즘을 통해 부하를 분산
 * L7 IP, Port + URI, Payload, Http Header, Cookie를 추가로 산정하여 부하를 분산함
 
-
+## 3. Kubernetes
+### Kubernetes Service
+* ClusterIP : 기본 서비스 타입이고 쿠버네티스 클러스터 내부에서 사용가능함. 클러스터 내부의 노드나 포드에서 이 ClusterIP를 이용해서 이 서비스에 연결된 포드에 접속 가능. 클러스터 외부에서는 이용할 수 없다
+* NodePort : 각 노드의 지정된 포트를 할당하는 방식. node1:8080, node2:8080 이런방식으로 노드에 상관없이 포트번호만 서비스에 지정된걸 사용하면 접근이 가능. 노드의 포트를 사용하기 때문에 클러스터 내부 뿐만 아니라 클러스터 외부에서도 접근이 가능. 특이한 점은 포드가 node1에만 떠 있고 node2에는 없다고 하더라도 node2:8080으로 접근하면 node1에 떠 있는 포드로 연결이 가능함. 클러스터외부에서 클러스터내부의 포드로 접근할때 사용할 수 있는 가장 간단한 방법
+* LoadBalancer : AWS, GCP 같은 클라우드 서비스를 사용할때 사용가능한 옵션. 포드를 클라우드에서 제공해주는 로드밸런서와 연결해서 그 로드밸런서의 IP를 이용해서 클러스터 외부에서 접근이 가능하게 함. kubectl get service로 서비스를 확인해 봤을때 EXTERNAL-IP 부분에 로드밸런서 IP가 표시되고 이 IP를 사용하면 외부에서 접근이 가능.
+* ExternalName : 서비스를 externalName의 값이랑 매치됨. 클러스터 내부에서 외부로 접근할때 주로 사용. 이 서비스로 접근하면 설정해둔 CNAME값으로 연결되서 클러스터 외부로 접근할 수 있다. 외부로 접근할때 사용하는 값이기 때문에 설정할때 셀렉터가 필요 없음
